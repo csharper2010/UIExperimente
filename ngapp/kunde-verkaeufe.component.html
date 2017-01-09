@@ -1,0 +1,21 @@
+﻿<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Datum</th>
+                <th colspan="2">Artikel</th>
+                <th>Menge</th>
+                <th>Einzelpreis</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let v of kunde.verkaeufe">
+                <td>{{v.datum.toLocaleString()}}</td>
+                <td class="number">{{v.artikelPzn | pzn}}</td>
+                <td>{{v.artikelKurzbezeichnung}}</td>
+                <td class="number">{{v.menge}}</td>
+                <td class="number">{{v.einzelpreis}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

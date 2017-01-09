@@ -1,0 +1,101 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+table#testContent {
+    width: 100vw;
+    height: 100vh;
+    background: lightgray;
+}
+
+th {
+    font-weight: 600;
+    text-align: left;
+}
+
+td.number {
+    text-align: right;
+}
+
+td#testItem {
+    width: 50%;
+    height: 100%;
+    vertical-align: top;
+}
+
+ng-kunde {
+    display: block;
+}
+
+ng-tabs {
+    display: flex;
+    min-height: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    position: relative;
+}
+
+div.nav-tabs {
+    display: flex;
+    min-height: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    position: relative;
+}
+div.nav-tab-content {
+    padding: 3px 10px 3px 10px;
+    border: solid black;
+    border-width: 0px 0px 0px 1px;
+    flex-basis: 100%;
+    position: relative;
+    left: -1px;
+}
+
+ng-tab {
+    display: block;
+}
+
+ul.nav-tabs {
+    float: left;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+ul.nav-tabs>li {
+    box-sizing: border-box;
+    padding: 3px 10px 3px 10px;
+    background: darkgray;
+    border: solid black;
+    border-width: 1px 1px 0px 1px;
+    border-radius: 5px 0px 0px 5px;
+    font-weight: bold;
+    z-index: 2;
+    display: block;
+    position: relative;
+    margin-bottom: -1;
+}
+
+ul.nav-tabs>li:first-child {
+    margin-top: 5px;
+}
+
+ul.nav-tabs>li:last-child {
+    border-bottom-width: 1px;
+    margin-bottom: 5px;
+}
+
+ul.nav-tabs>li.active {
+    padding: 2px 12px 4px 8px;
+    background: lightgray;
+    border-right-color: lightgray;
+}

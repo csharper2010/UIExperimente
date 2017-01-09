@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <base href="/">
+        <title>UI Experimente</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles/style.css">
+
+        <!-- Polyfill(s) for older browsers -->
+        <script src="node_modules/core-js/client/shim.min.js"></script>
+
+        <script src="node_modules/zone.js/dist/zone.js"></script>
+        <script src="node_modules/reflect-metadata/Reflect.js"></script>
+        <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+        <script src="systemjs.config.js"></script>
+        <script>
+            System.import('ngapp').catch(function(err){ console.error(err); });
+            System.import('reactapp').catch(function(err){ console.error(err); });
+        </script>
+    </head>
+    <body>
+        <table id="testContent">
+            <tr>
+                <td id="testItem"><h1>Angular</h1><ng-kunde>Loading...</ng-kunde></td>
+                <td id="testItem"><h1>React</h1><div id="react-app">Loading...</div></td>
+            </tr>
+        </table>
+    </body>
+</html>
