@@ -16,10 +16,10 @@ export class KundeView extends React.Component<any, KundeState> {
         let kunde = this.state.kunde;
         return (
             <Tabs>
-                <Tab title="Stammdaten" content={
+                <Tab title="Stammdaten" hotKey="S" content={
                     <KundeStammdatenView kunde={this.state.kunde} />
                     } />
-                <Tab title="Verkäufe" isActive={true} content={
+                <Tab title="Verkäufe" hotKey="Z" isActive={true} content={
                     <KundeVerkaeufeView kunde={this.state.kunde} />
                 } />
             </Tabs>
