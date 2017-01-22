@@ -1,4 +1,4 @@
-import { Component, Input, ContentChildren, QueryList, HostListener, ViewChildren, ElementRef, AfterContentInit, AfterViewChecked } from '@angular/core';
+import { Component, Input, ContentChildren, QueryList, ElementRef, AfterContentInit } from '@angular/core';
 
 import { TabComponent } from './tab.component';
 
@@ -6,8 +6,8 @@ import { TabComponent } from './tab.component';
     moduleId: module.id,
     selector: 'ng-tabs',
     template: `
-        <ul class="nav-tabs" (keydown)=handleKeyPress($event)>
-            <li #tabHeader *ngFor="let tab of tabs; let i = index" (click)=selectTab(i) [class.active]="isActiveTab(i)" [tabindex]="isActiveTab(i) ? 0 : -1">
+        <ul class="nav-tabs" (keydown)=handleKeyPress($event) tabindex="0">
+            <li *ngFor="let tab of tabs; let i = index" (click)=selectTab(i) [class.active]="isActiveTab(i)">
                 {{tab.title}}
             </li>
         </ul>
@@ -16,15 +16,12 @@ import { TabComponent } from './tab.component';
         </div>
         `
 })
-export class TabsComponent implements AfterContentInit, AfterViewChecked {
+export class TabsComponent implements AfterContentInit {
     @Input("activeTab")
     activeTabIndex: number;
 
     @ContentChildren(TabComponent)
     tabs: QueryList<TabComponent>;
-
-    @ViewChildren("tabHeader")
-    tabHeaders: QueryList<ElementRef>;
 
     constructor() {
         this.activeTabIndex = 0;
@@ -39,9 +36,6 @@ export class TabsComponent implements AfterContentInit, AfterViewChecked {
             this.activeTabIndex = 0;
         }
         this.selectTab(this.activeTabIndex);
-    }
-
-    ngAfterViewChecked() {
     }
 
     isActiveTab(index: number) {
@@ -60,15 +54,11 @@ export class TabsComponent implements AfterContentInit, AfterViewChecked {
             if (this.activeTabIndex > 0) {
                 this.selectTab(this.activeTabIndex - 1);
             }
-            let element = this.tabHeaders.toArray()[this.activeTabIndex].nativeElement;
-            setTimeout(element.focus());
             event.preventDefault();
         } else if (event.keyCode == 40 || event.keyCode == 39) {
             if (this.activeTabIndex < this.tabs.length - 1) {
                 this.selectTab(this.activeTabIndex + 1);
             }
-            let element = this.tabHeaders.toArray()[this.activeTabIndex].nativeElement;
-            setTimeout(element.focus());
             event.preventDefault();
         }
     }

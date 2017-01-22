@@ -85,10 +85,10 @@ ul.nav-tabs>li {
     margin-bottom: -1;
 }
 
-ul.nav-tabs>li:focus{
+ul.nav-tabs:focus{
     outline: 0px;
 }
-ul.nav-tabs>li:focus:before {
+ul.nav-tabs:focus>li.active:before {
     content: " ";
     position: absolute;
     top: 1px;
