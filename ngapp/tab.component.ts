@@ -12,6 +12,8 @@ import { Component, Input, ContentChildren, QueryList } from '@angular/core';
 export class TabComponent {
     @Input()
     title: string;
-    isActive: boolean = false;
+    @Input()
+    hotKey?: string;
+    isActive: boolean = false;    
 }
 

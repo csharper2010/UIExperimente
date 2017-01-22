@@ -1,4 +1,4 @@
-import { Component, Input, ContentChildren, QueryList, ElementRef, AfterContentInit } from '@angular/core';
+import { Component, Input, ContentChildren, QueryList, ViewChild, ElementRef, AfterContentInit, HostListener } from '@angular/core';
 
 import { TabComponent } from './tab.component';
 
@@ -6,9 +6,9 @@ import { TabComponent } from './tab.component';
     moduleId: module.id,
     selector: 'ng-tabs',
     template: `
-        <ul class="nav-tabs" (keydown)=handleKeyPress($event) tabindex="0">
-            <li *ngFor="let tab of tabs; let i = index" (click)=selectTab(i) [class.active]="isActiveTab(i)">
-                {{tab.title}}
+        <ul #tabHeader class="nav-tabs" (keydown)=handleKeyPress($event) tabindex="0">
+            <li *ngFor="let tab of tabs; let i = index" (click)=selectTab(i) [class.active]="isActiveTab(i)"
+                [innerHTML]="getTabHeader(tab.title, tab.hotKey)">
             </li>
         </ul>
         <div class="nav-tab-content">
@@ -23,12 +23,27 @@ export class TabsComponent implements AfterContentInit {
     @ContentChildren(TabComponent)
     tabs: QueryList<TabComponent>;
 
+    @ViewChild('tabHeader')
+    private tabHeader: ElementRef; 
+
     constructor() {
         this.activeTabIndex = 0;
     }
 
     get activeTab(): TabComponent {
         return this.tabs.toArray()[this.activeTabIndex];
+    }
+
+    getTabHeader(title: string, hotKey?: string): string {
+        var index: number;
+        if (hotKey) {
+            if ((index = title.toLowerCase().indexOf(hotKey.toLowerCase())) >= 0) {
+                return title.substring(0, index) + '<u>' + title.substring(index, index + 1) + '</u>' + title.substring(index + 1);
+            } else {
+                return title + '&nbsp;(<u>' + hotKey.toUpperCase() + '</u>)';
+            }
+        }
+        return title;
     }
 
     ngAfterContentInit() {
@@ -60,6 +75,16 @@ export class TabsComponent implements AfterContentInit {
                 this.selectTab(this.activeTabIndex + 1);
             }
             event.preventDefault();
+        }
+    }
+
+    @HostListener('document:keydown', ['$event'])
+    windowKeyDown(event: KeyboardEvent) {
+        var index: number;
+        if (event.altKey && !event.ctrlKey
+            && (index = this.tabs.toArray().findIndex(t => event.key.localeCompare(t.hotKey, undefined, { sensitivity: 'accent' }) == 0)) >= 0) {
+            this.selectTab(index);
+            this.tabHeader.nativeElement.focus();
         }
     }
 }
