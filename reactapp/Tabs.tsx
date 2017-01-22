@@ -17,7 +17,6 @@ export class Tab extends React.Component<TabProps, any> {
 
 function SetActiveTab(tabs: Tab[], index: number) {
     tabs.forEach((t, i) => {
-        //t.setActive(i == index);
         t.props.isActive = i == index;
     });
 }
