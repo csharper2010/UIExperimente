@@ -22,26 +22,6 @@ function SetActiveTab(tabs: Tab[], index: number) {
     });
 }
 
-// export function Tabs(props: TabsProps): any {
-//     let activeTabIndex = props.children.findIndex(t => t.props.isActive);
-//     if (activeTabIndex < 0) {
-//         activeTabIndex = 0;
-//     };
-//     SetActiveTab(props.children, activeTabIndex);
-//     return (
-//     <div className='nav-tabs'>
-//         <ul className='nav-tabs'>
-//         {
-//             props.children.map((tab: any, index: number) => (
-//                 <li className={index == activeTabIndex ? "active" : ""} key={index}>{tab.props.title}</li>
-//             ))
-//         }
-//         </ul>
-//         <div className='nav-tab-content'>
-//             {props.children[activeTabIndex].props.content }
-//         </div>
-//     </div>
-// )};
 export class Tabs extends React.Component<{children?: any}, {activeTabIndex?: number}> {
     constructor() {
         super();
@@ -53,7 +33,7 @@ export class Tabs extends React.Component<{children?: any}, {activeTabIndex?: nu
         let tabs = this.props.children || [] as Tab[];
         return (
             <div className='nav-tabs'>
-                <ul className='nav-tabs'>
+            <ul className='nav-tabs' tabIndex={0} onKeyDown={ e => this.keyDown(e) }>
                 {tabs.map((tab: Tab, index: number) => (
                     <li className={index == activeTabIndex ? "active" : ""} key={index} onClick={() => this.setActiveTab(index)}>{tab.props.title}</li>
                 ))}
@@ -66,5 +46,19 @@ export class Tabs extends React.Component<{children?: any}, {activeTabIndex?: nu
 
     setActiveTab(index: number) {
         this.setState({ activeTabIndex: index });
+    }
+
+    keyDown(event: React.KeyboardEvent<HTMLUListElement>) {
+        if (event.keyCode == 38 || event.keyCode == 37) {
+            if (this.state.activeTabIndex > 0) {
+                this.setActiveTab(this.state.activeTabIndex - 1);
+            }
+            event.preventDefault();
+        } else if (event.keyCode == 40 || event.keyCode == 39) {
+            if (this.state.activeTabIndex < this.props.children.length - 1) {
+                this.setActiveTab(this.state.activeTabIndex + 1);
+            }
+            event.preventDefault();
+        }
     }
 }
