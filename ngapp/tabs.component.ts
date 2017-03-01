@@ -17,14 +17,14 @@ import { TabComponent } from './tab.component';
         `
 })
 export class TabsComponent implements AfterContentInit {
-    @Input("activeTab")
+    @Input('activeTab')
     activeTabIndex: number;
 
     @ContentChildren(TabComponent)
     tabs: QueryList<TabComponent>;
 
     @ViewChild('tabHeader')
-    private tabHeader: ElementRef; 
+    private tabHeader: ElementRef;
 
     constructor() {
         this.activeTabIndex = 0;
@@ -35,7 +35,7 @@ export class TabsComponent implements AfterContentInit {
     }
 
     getTabHeader(title: string, hotKey?: string): string {
-        var index: number;
+        let index: number;
         if (hotKey) {
             if ((index = title.toLowerCase().indexOf(hotKey.toLowerCase())) >= 0) {
                 return title.substring(0, index) + '<u>' + title.substring(index, index + 1) + '</u>' + title.substring(index + 1);
@@ -80,7 +80,7 @@ export class TabsComponent implements AfterContentInit {
 
     @HostListener('document:keydown', ['$event'])
     windowKeyDown(event: KeyboardEvent) {
-        var index: number;
+        let index: number;
         if (event.altKey && !event.shiftKey
             && (index = this.tabs.toArray().findIndex(t => event.key.localeCompare(t.hotKey, undefined, { sensitivity: 'accent' }) == 0)) >= 0) {
             this.selectTab(index);

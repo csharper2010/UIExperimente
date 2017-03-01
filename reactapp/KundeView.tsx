@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { KundeService, Kunde } from '../model/Kunde'
-import { KundeState } from './KundeState'
-import { KundeStammdatenView } from './KundeStammdatenView'
-import { KundeVerkaeufeView } from './KundeVerkaeufeView'
-import { Tab, Tabs } from './Tabs'
+import { KundeService, Kunde } from '../model/Kunde';
+import { KundeState } from './KundeState';
+import { KundeStammdatenView } from './KundeStammdatenView';
+import { KundeVerkaeufeView } from './KundeVerkaeufeView';
+import { Tab, Tabs } from './Tabs';
 
 export class KundeView extends React.Component<any, KundeState> {
     constructor() {
@@ -16,10 +16,10 @@ export class KundeView extends React.Component<any, KundeState> {
         let kunde = this.state.kunde;
         return (
             <Tabs>
-                <Tab title="Stammdaten" hotKey="S" content={
+                <Tab title='Stammdaten' hotKey='S' content={
                     <KundeStammdatenView kunde={this.state.kunde} />
                     } />
-                <Tab title="Verkäufe" hotKey="Z" isActive={true} content={
+                <Tab title='Verkäufe' hotKey='Z' isActive={true} content={
                     <KundeVerkaeufeView kunde={this.state.kunde} />
                 } />
             </Tabs>

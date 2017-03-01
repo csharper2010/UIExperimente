@@ -14,8 +14,8 @@ export class KundeVerkaeufeView extends React.Component<KundeState, any> {
                 <td>{v.datum.toLocaleString()}</td>
                 <td>{Converter.ToPzn(v.artikelPzn)}</td>
                 <td>{v.artikelKurzbezeichnung}</td>
-                <td className="number">{v.menge}</td>
-                <td className="number">{v.einzelpreis}</td>
+                <td className='number'>{v.menge}</td>
+                <td className='number'>{v.einzelpreis}</td>
             </tr>
         ));
         return <table>

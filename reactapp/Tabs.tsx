@@ -23,12 +23,12 @@ function SetActiveTab(tabs: Tab[], index: number) {
 }
 
 export class Tabs extends React.Component<{children?: any}, {activeTabIndex?: number}> {
+    private tabHeaders?: Element;
+
     constructor() {
         super();
         this.state = {};
     }
-
-    private tabHeaders?: Element;
 
     public render() {
         let activeTabIndex = this.state.activeTabIndex || 0;
@@ -37,25 +37,25 @@ export class Tabs extends React.Component<{children?: any}, {activeTabIndex?: nu
             <div className='nav-tabs'>
             <ul className='nav-tabs' tabIndex={0} onKeyDown={ e => this.keyDown(e) } ref={t => { this.tabHeaders = t; }}>
                 {tabs.map((tab: Tab, index: number) => (
-                    <li className={index == activeTabIndex ? "active" : ""} key={index} onClick={() => this.setActiveTab(index)}>{this.getTabHeader(tab.props.title, tab.props.hotKey)}</li>
+                    <li className={index == activeTabIndex ? 'active' : ''} key={index} onClick={() => this.setActiveTab(index)}>{this.getTabHeader(tab.props.title, tab.props.hotKey)}</li>
                 ))}
                 </ul>
                 <div className='nav-tab-content'>
                     {tabs[activeTabIndex].props.content }
                 </div>
             </div>
-    )};
+    );};
 
     public componentDidMount() {
         document.addEventListener('keydown', e => this.globalKeyDown(e));
     }
 
-    public componentWillUnmount() {        
+    public componentWillUnmount() {
         document.removeEventListener('keydown', e => this.globalKeyDown(e as any));
     }
 
     getTabHeader(title: string, hotKey?: string): JSX.Element {
-        var index: number;
+        let index: number;
         if (hotKey) {
             if ((index = title.toLowerCase().indexOf(hotKey.toLowerCase())) >= 0) {
                 return <span>{title.substring(0, index)}<u>{title.substring(index, index + 1)}</u>{title.substring(index + 1)}</span>;
@@ -85,11 +85,13 @@ export class Tabs extends React.Component<{children?: any}, {activeTabIndex?: nu
     }
 
     globalKeyDown(event: KeyboardEvent) {
-        var index: number;
+        let index: number;
         if (event.altKey && event.shiftKey) {
             if ((index = (this.props.children as Tab[] || [] as Tab[]).findIndex(t => event.key.localeCompare(t.props.hotKey, undefined, { sensitivity: 'accent' }) == 0)) >= 0) {
                 this.setActiveTab(index);
-                this.tabHeaders && (this.tabHeaders as any).focus();
+                if (this.tabHeaders) {
+                    (this.tabHeaders as any).focus();
+                }
                 event.preventDefault();
             }
         }

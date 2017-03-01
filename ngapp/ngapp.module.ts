@@ -12,7 +12,7 @@ import { PznPipe } from './pzn-pipe';
 @NgModule({
     imports: [
         BrowserModule,
-        FormsModule
+        FormsModule,
     ],
     declarations: [
         PznPipe,
@@ -22,6 +22,6 @@ import { PznPipe } from './pzn-pipe';
         KundeStammdatenComponent,
         KundeVerkaeufeComponent,
     ],
-    bootstrap: [ KundeComponent ]
+    bootstrap: [ KundeComponent ],
 })
 export class NgappModule { }

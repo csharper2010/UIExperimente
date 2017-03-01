@@ -14,6 +14,6 @@ export class TabComponent {
     title: string;
     @Input()
     hotKey?: string;
-    isActive: boolean = false;    
+    isActive = false;
 }
 
