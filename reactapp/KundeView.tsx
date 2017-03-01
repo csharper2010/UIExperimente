@@ -1,28 +1,29 @@
 import * as React from 'react';
 
-import { KundeService, Kunde } from '../model/Kunde';
 import { KundeState } from './KundeState';
 import { KundeStammdatenView } from './KundeStammdatenView';
 import { KundeVerkaeufeView } from './KundeVerkaeufeView';
 import { Tab, Tabs } from './Tabs';
 
-export class KundeView extends React.Component<any, KundeState> {
+export class KundeView extends React.Component<KundeState, any> {
     constructor() {
         super();
-        this.state = { kunde: new KundeService().getKunde() };
     }
 
     public render() {
-        let kunde = this.state.kunde;
+        let kunde = this.props.kunde;
         return (
-            <Tabs>
-                <Tab title='Stammdaten' hotKey='S' content={
-                    <KundeStammdatenView kunde={this.state.kunde} />
+            <div>
+                <h3>{this.props.kunde.vorname} {this.props.kunde.name}</h3>
+                <Tabs>
+                    <Tab title='Stammdaten' hotKey='S' content={
+                        <KundeStammdatenView kunde={this.props.kunde} />
+                        } />
+                    <Tab title='Verkäufe' hotKey='Z' isActive={true} content={
+                        <KundeVerkaeufeView kunde={this.props.kunde} />
                     } />
-                <Tab title='Verkäufe' hotKey='Z' isActive={true} content={
-                    <KundeVerkaeufeView kunde={this.state.kunde} />
-                } />
-            </Tabs>
+                </Tabs>
+            </div>
         );
     }
 }

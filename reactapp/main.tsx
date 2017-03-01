@@ -3,8 +3,10 @@ import * as ReactDOM from 'react-dom';
 
 import { KundeView } from './KundeView';
 
+import { store$ } from './KundeStore';
+
 let x = document.getElementById('react-app');
-ReactDOM.render(
-    <KundeView />,
+store$.subscribe((state) => ReactDOM.render(
+    <KundeView {...state} />,
     x,
-);
+));
