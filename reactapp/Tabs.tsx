@@ -16,12 +16,6 @@ export class Tab extends React.Component<TabProps, any> {
     }
 }
 
-function SetActiveTab(tabs: Tab[], index: number) {
-    tabs.forEach((t, i) => {
-        t.props.isActive = i == index;
-    });
-}
-
 export class Tabs extends React.Component<{children?: any}, {activeTabIndex?: number}> {
     private tabHeaders?: Element;
 
@@ -43,8 +37,8 @@ export class Tabs extends React.Component<{children?: any}, {activeTabIndex?: nu
                 <div className='nav-tab-content'>
                     {tabs[activeTabIndex].props.content }
                 </div>
-            </div>
-    );};
+            </div>);
+    };
 
     public componentDidMount() {
         document.addEventListener('keydown', e => this.globalKeyDown(e));

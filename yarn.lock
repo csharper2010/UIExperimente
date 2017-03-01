@@ -2,47 +2,47 @@
 # yarn lockfile v1
 
 
-"@angular/common@^2.4.1":
-  version "2.4.8"
-  resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.4.8.tgz#e45a77a9d852c8e7135053ff38cf805435458c48"
+"@angular/common@^4.0.0-rc.1":
+  version "4.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@angular/common/-/common-4.0.0-rc.1.tgz#b5bc1e14ca97689048277b2f5f8e5f6065018eb9"
 
-"@angular/compiler@^2.4.1":
-  version "2.4.8"
-  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.4.8.tgz#fa788fc8bed9f322b040af2b9a06a70991390e23"
+"@angular/compiler@^4.0.0-rc.1":
+  version "4.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-4.0.0-rc.1.tgz#e89f2d76f8800cb599e9dc6c7f8a381e79b92715"
 
-"@angular/core@^2.4.1":
-  version "2.4.8"
-  resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.4.8.tgz#bf1a4fc324827516e6c3222047a9b2cbdaee6976"
+"@angular/core@^4.0.0-rc.1":
+  version "4.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-4.0.0-rc.1.tgz#7f87b7696b407476e45d6d3c1880a50d5afbb6e3"
 
-"@angular/forms@^2.4.1":
-  version "2.4.8"
-  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-2.4.8.tgz#51512a801aaf3a1eba7bce2b22694537b93f047f"
+"@angular/forms@^4.0.0-rc.1":
+  version "4.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-4.0.0-rc.1.tgz#2b768afe3d29231222f5e131918e21571e1cf597"
 
-"@angular/http@^2.4.1":
-  version "2.4.8"
-  resolved "https://registry.yarnpkg.com/@angular/http/-/http-2.4.8.tgz#e81ac8e4db836ed813edc4ffa137596cd5836baf"
+"@angular/http@^4.0.0-rc.1":
+  version "4.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@angular/http/-/http-4.0.0-rc.1.tgz#66c548eed938933ef22ab706cb6371b58b6bc397"
 
-"@angular/platform-browser-dynamic@^2.4.1":
-  version "2.4.8"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.4.8.tgz#86059fe930489d1ca0056a5aba0b4420414759f5"
+"@angular/platform-browser-dynamic@^4.0.0-rc.1":
+  version "4.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-4.0.0-rc.1.tgz#3332caeabe4f29746fff5699701b3bed3e35c480"
 
-"@angular/platform-browser@^2.4.1":
-  version "2.4.8"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.4.8.tgz#686bc82d9188e354181699640777237ed79122ed"
+"@angular/platform-browser@^4.0.0-rc.1":
+  version "4.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-4.0.0-rc.1.tgz#74e5834c9fd22185851eb15ab1444679f7fe87b0"
 
 "@types/node@^6.0.55":
   version "6.0.64"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.64.tgz#cdc901411f6301e1437dfed23bc68f54442e4dc8"
 
-"@types/react-dom@^0.14.20":
+"@types/react-dom@^0.14.23":
   version "0.14.23"
   resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-0.14.23.tgz#cecfcfad754b4c2765fe5d29b81b301889ad6c2e"
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@^0.14.55":
-  version "0.14.57"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-0.14.57.tgz#1878a8654fafdd1d381b8457292b6433498c5b62"
+"@types/react@*", "@types/react@^15.0.13":
+  version "15.0.13"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-15.0.13.tgz#7031530b0d1b77941551cda06e5b56b704505f12"
 
 abbrev@1:
   version "1.1.0"
@@ -1758,7 +1758,7 @@ rc@^1.0.1, rc@^1.1.6, rc@~1.1.6:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-dom@^15.4.1:
+react-dom@^15.4.2:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.4.2.tgz#015363f05b0a1fd52ae9efdd3a0060d90695208f"
   dependencies:
@@ -1766,7 +1766,7 @@ react-dom@^15.4.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
 
-react@^15.4.1:
+react@^15.4.2:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react/-/react-15.4.2.tgz#41f7991b26185392ba9bae96c8889e7e018397ef"
   dependencies:
@@ -1942,7 +1942,7 @@ rx@4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
 
-rxjs@^5.0.2:
+rxjs@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.2.0.tgz#db537de8767c05fa73721587a29e0085307d318b"
   dependencies:
