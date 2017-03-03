@@ -17,10 +17,10 @@ export class KundeView extends React.Component<KundeState, any> {
                 <h3>{this.props.kunde.vorname} {this.props.kunde.name}</h3>
                 <Tabs>
                     <Tab title='Stammdaten' hotKey='S' content={
-                        <KundeStammdatenView kunde={this.props.kunde} />
+                        <KundeStammdatenView {...this.props} />
                         } />
-                    <Tab title='Verkäufe' hotKey='Z' isActive={true} content={
-                        <KundeVerkaeufeView kunde={this.props.kunde} />
+                    <Tab title='Verkäufe' hotKey='Z' content={
+                        <KundeVerkaeufeView {...this.props} />
                     } />
                 </Tabs>
             </div>
