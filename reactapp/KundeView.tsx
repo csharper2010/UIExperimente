@@ -15,7 +15,7 @@ export class KundeView extends React.Component<KundeState, any> {
         return (
             <div>
                 <h3>{this.props.kunde.vorname} {this.props.kunde.name}</h3>
-                <Tabs>
+                <Tabs defaultTabIndex={0}>
                     <Tab title='Stammdaten' hotKey='S' content={
                         <KundeStammdatenView {...this.props} />
                         } />

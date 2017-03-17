@@ -16,16 +16,25 @@ export class Tab extends React.Component<TabProps, any> {
     }
 }
 
-export class Tabs extends React.Component<{children?: any}, {activeTabIndex?: number}> {
+interface TabsProps {
+    defaultTabIndex?: number;
+    tabIndex?: number;
+    onTabIndexChanged?: (newTabIndex: number) => bool;
+    children?: any;
+}
+
+export class Tabs extends React.Component<TabsProps, {tabIndex: number}> {
     private tabHeaders?: Element;
 
-    constructor() {
+    constructor(props: TabsProps) {
         super();
-        this.state = {};
+        this.state = {
+            tabIndex: props.tabIndex || props.defaultTabIndex || 0,
+        };
     }
 
     public render() {
-        let activeTabIndex = this.state.activeTabIndex || 0;
+        let activeTabIndex = this.props.tabIndex || this.state.tabIndex;
         let tabs = this.props.children || [] as Tab[];
         return (
             <div className='nav-tabs'>
@@ -61,18 +70,21 @@ export class Tabs extends React.Component<{children?: any}, {activeTabIndex?: nu
     }
 
     setActiveTab(index: number) {
-        this.setState({ activeTabIndex: index });
+        if (this.props.onTabIndexChanged && !this.props.onTabIndexChanged(index)) {
+            return;
+        }
+        this.setState({ tabIndex: index });
     }
 
     keyDown(event: React.KeyboardEvent<HTMLUListElement>) {
         if (event.keyCode == 38 || event.keyCode == 37) {
-            if (this.state.activeTabIndex > 0) {
-                this.setActiveTab(this.state.activeTabIndex - 1);
+            if (this.state.tabIndex > 0) {
+                this.setActiveTab(this.state.tabIndex - 1);
             }
             event.preventDefault();
         } else if (event.keyCode == 40 || event.keyCode == 39) {
-            if (this.state.activeTabIndex < this.props.children.length - 1) {
-                this.setActiveTab(this.state.activeTabIndex + 1);
+            if (this.state.tabIndex < this.props.children.length - 1) {
+                this.setActiveTab(this.state.tabIndex + 1);
             }
             event.preventDefault();
         }
