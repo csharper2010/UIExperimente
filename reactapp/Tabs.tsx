@@ -19,7 +19,7 @@ export class Tab extends React.Component<TabProps, any> {
 interface TabsProps {
     defaultTabIndex?: number;
     tabIndex?: number;
-    onTabIndexChanged?: (newTabIndex: number) => bool;
+    onTabIndexChanged?: (newTabIndex: number) => boolean;
     children?: any;
 }
 

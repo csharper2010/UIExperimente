@@ -7,7 +7,7 @@ import { Component, Input, ContentChildren, QueryList } from '@angular/core';
         <div *ngIf="isActive" class="content">
             <ng-content></ng-content>
         </div>
-    `
+    `,
 })
 export class TabComponent {
     @Input()

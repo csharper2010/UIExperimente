@@ -14,7 +14,7 @@ import { TabComponent } from './tab.component';
         <div class="nav-tab-content">
             <ng-content></ng-content>
         </div>
-        `
+        `,
 })
 export class TabsComponent implements AfterContentInit {
     @Input('activeTab')
