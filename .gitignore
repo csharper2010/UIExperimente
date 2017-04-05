@@ -9,3 +9,6 @@ node_modules/
 # JS and JS.MAP
 **/*.js
 **/*.js.MAP
+
+# config.js in root folder
+!/*.js
