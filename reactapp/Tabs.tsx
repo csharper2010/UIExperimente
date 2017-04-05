@@ -93,10 +93,11 @@ export class Tabs extends React.Component<TabsProps, {tabIndex: number}> {
     globalKeyDown(event: KeyboardEvent) {
         let index: number;
         if (event.altKey && event.shiftKey) {
-            if ((index = (this.props.children as Tab[] || [] as Tab[]).findIndex(t => event.key.localeCompare(t.props.hotKey, undefined, { sensitivity: 'accent' }) == 0)) >= 0) {
+            if ((index = (this.props.children as Tab[] || [] as Tab[])
+                    .findIndex(t => t.props.hotKey != null && event.key.localeCompare(t.props.hotKey, undefined, { sensitivity: 'accent' }) == 0)) >= 0) {
                 this.setActiveTab(index);
                 if (this.tabHeaders) {
-                    (this.tabHeaders as any).focus();
+                    (this.tabHeaders as HTMLElement).focus();
                 }
                 event.preventDefault();
             }

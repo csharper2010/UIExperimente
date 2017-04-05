@@ -82,7 +82,7 @@ export class TabsComponent implements AfterContentInit {
     windowKeyDown(event: KeyboardEvent) {
         let index: number;
         if (event.altKey && !event.shiftKey
-            && (index = this.tabs.toArray().findIndex(t => event.key.localeCompare(t.hotKey, undefined, { sensitivity: 'accent' }) == 0)) >= 0) {
+            && (index = this.tabs.toArray().findIndex(t => t.hotKey != null && event.key.localeCompare(t.hotKey, undefined, { sensitivity: 'accent' }) == 0)) >= 0) {
             this.selectTab(index);
             this.tabHeader.nativeElement.focus();
             event.preventDefault();
